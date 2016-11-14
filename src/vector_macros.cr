@@ -1,6 +1,6 @@
 macro define_vector_op(op, components)
-  def {{op.id}}(other : self)
-    self.new(
+  def {{op.id}}(other : {{@type}})
+    new(
       {% for c in components %}
       {{c.id}} {{op.id}} other.{{c.id}},
       {% end %}
@@ -10,7 +10,7 @@ end
 
 macro define_op(op, components, type)
   def {{op.id}}(other : {{type.id}})
-    self.new(
+    {{@type}}.new(
       {% for c in components %}
       {{c.id}} {{op.id}} other,
       {% end %}
@@ -19,7 +19,7 @@ macro define_op(op, components, type)
 end
 
 macro define_dot(components)
-  def dot(other : self)
+  def dot(other : {{@type}})
     {% for c in components[0..-1] %}
       {{c.id}} * other.{{c.id}} + 
     {% end %}
