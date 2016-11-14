@@ -10,6 +10,7 @@ module LA
     define_vector_op(:+, [:x])
     define_vector_op(:-, [:x])
     define_op(:*, [:x], T)
+    define_op(:/, [:x], T)
     define_dot([:x])
     define_length([:x])
   end
@@ -28,6 +29,7 @@ module LA
     define_vector_op(:+, [:x, :y])
     define_vector_op(:-, [:x, :y])
     define_op(:*, [:x, :y], T)
+    define_op(:/, [:x, :y], T)
     define_dot([:x, :y])
     define_length([:x, :y])
   end
@@ -48,6 +50,7 @@ module LA
     define_vector_op(:-, [:x, :y, :z])
 
     define_op(:*, [:x, :y, :z], T)
+    define_op(:/, [:x, :y, :z], T)
     define_dot([:x, :y, :z])
     define_length([:x, :y, :z])
   end
