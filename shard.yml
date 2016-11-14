@@ -1,0 +1,10 @@
+name: linalg
+version: 0.0.1
+
+authors:
+  - Leon Rische <hello@l3kn.de>
+
+description: |
+  Linear algebra functions
+
+license: MIT
