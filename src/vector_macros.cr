@@ -1,6 +1,6 @@
 macro define_vector_op(op, components)
   def {{op.id}}(other : {{@type}})
-    new(
+    {{@type}}.new(
       {% for c in components %}
       {{c.id}} {{op.id}} other.{{c.id}},
       {% end %}
