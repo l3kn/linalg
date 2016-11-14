@@ -29,11 +29,11 @@ end
 
 macro define_length(components)
   def length
-    Math.sqrt({% for c in components[0..-1] %} c * {% end %} {{components[-1].id}})
+    Math.sqrt({% for c in components[0..-1] %} {{c.id}} * {% end %} {{components[-1].id}})
   end
 
   def squared_length
-    {% for c in components[0..-1] %} c * {% end %} {{components[-1].id}}
+    {% for c in components[0..-1] %} {{c.id}} * {% end %} {{components[-1].id}}
   end
 
   def normalize
