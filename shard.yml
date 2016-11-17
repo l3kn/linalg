@@ -1,10 +1,15 @@
 name: linalg
-version: 0.0.1
+version: 0.0.2
 
 authors:
   - Leon Rische <hello@l3kn.de>
 
 description: |
   Linear algebra functions
+
+development_dependencies:
+  minitest:
+    github: "ysbaddaden/minitest.cr"
+    version: "~> 0.3.4"
 
 license: MIT
