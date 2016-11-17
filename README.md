@@ -155,7 +155,7 @@ p red * other # => Color(@r=0.8, @g=0.0, @b=0.0)
 is not „enabled“ (the macros are not included) for the default vector structs,
 but it can be included via the `define_swizzling(target_size, target = :tuple, signed = false)` macro.
 
-```
+``` crystal
 struct Vec2 < LA::AVector2
   # By default, the swizzled methods return a tuple with the values
   define_vector_swizzling(2)
