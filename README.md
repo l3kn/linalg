@@ -163,13 +163,13 @@ end
 
 struct Vec3 < LA::AVector3
   # The other valid options are to pass `:array` or a class name as the `target`
-  define_vector_swizzling(2, target: Vec2)
+  define_vector_swizzling(3, target: :array)
 
   # If `signed` is set to `true`,
   # in addition to methods like `vector.xyz`
   # the macro will create “signed” methods
   # like `vector._x_y_z` or `.vector.x_zy`
-  define_vector_swizzling(3, target: :array, signed: true)
+  define_vector_swizzling(2, target: Vec2, signed: true)
 end
 
 a = Vec2.new(1.0, 2.0)
