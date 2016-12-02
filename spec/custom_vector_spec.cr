@@ -5,7 +5,7 @@ module LA
   struct Color
     COMPONENTS = [:r, :g, :b]
 
-    define_class_methods(Color)
+    define_class_methods
     # `define_vector` defines all the vector methods
     # (see: __Example 1__) at once
     define_vector

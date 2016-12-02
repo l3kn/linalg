@@ -1,7 +1,7 @@
 # TODO: Is there a way to implement these
 # in the abstract class?
 
-macro define_class_methods(class_name)
+macro define_class_methods
   def self.one
     self.new(1.0)
   end
@@ -42,6 +42,8 @@ macro define_vector
   define_op(:/)
   define_dot
   define_length
+
+  define_class_methods
 end
 
 macro define_vector_op(op, other_class = self, result_class = self.class)

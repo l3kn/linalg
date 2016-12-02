@@ -22,14 +22,15 @@ include LA # so we can use `Vector2` instead of `LA::Vector2`
 
 # Predefined constants:
 # * `COMPONENTS` (needed by the macros)
-# * `ZERO`, `ONE`
+# Predefined class methods (to enable stuff like [v1, v2, v3].sum)
+# * `zero`, `one`
 # * one for each component
 
 p Vector2::COMPONENTS # => [:x, :y]
-p Vector2::ZERO       # => LA::Vector2(@x = 0.0, @y = 0.0)
-p Vector2::ONE        # => LA::Vector2(@x = 1.0, @y = 1.0)
-p Vector2::X          # => LA::Vector2(@x = 1.0, @y = 0.0)
-p Vector2::Y          # => LA::Vector2(@x = 0.0, @y = 1.0)
+p Vector2.zero        # => LA::Vector2(@x = 0.0, @y = 0.0)
+p Vector2.one         # => LA::Vector2(@x = 1.0, @y = 1.0)
+p Vector2.x           # => LA::Vector2(@x = 1.0, @y = 0.0)
+p Vector2.y           # => LA::Vector2(@x = 0.0, @y = 1.0)
 
 a = Vector2.new(1.0, 2.0)
 b = Vector2.new(3.0, 4.0)
@@ -48,8 +49,8 @@ p b / 2.0             # => LA::Vector2(@x = 1.5, @y = 2.0)
 p a.dot(b)            # => 11.0
 
 # The cross product is only implemented for Vector3
-x = Vector3::X
-y = Vector3::Y
+x = Vector3.x
+y = Vector3.y
 
 p x.cross(y)          # => LA::Vector3(@x = 0.0, @y = 0.0, @z = 1.0)
 
@@ -68,13 +69,10 @@ not possible for structs to inherit from non-abstract structs
 * `LA::AVector4`
 
 These implement all of the `VectorN` functions,
-only the constanst are missing.
-
-In fact the “implementation” von `LA::Vector3` looks like this:
+in fact the “implementation” von `LA::Vector3` looks like this:
 
 ``` crystal
 struct Vector3 < AVector3
-  define_constants(Vector3)
 end
 ```
 
@@ -84,11 +82,6 @@ end
 require "linalg"
 
 struct Normal < LA::AVector3
-  # Usually we would need to call
-  # `define_constants(Normal)` here,
-  # but `ZERO` and `ONE` would make no sense,
-  # because they are not 1.0 units long
-
   # The methods of `LA::AVectors3` are defined
   # using the following macros
   # `define_vector_op(:+)`
@@ -117,6 +110,14 @@ struct Normal < LA::AVector3
 
   define_op(:*, other_class: Int32, result_class: LA::Vector3)
   define_op(:/, other_class: Int32, result_class: LA::Vector3)
+
+  def self.one
+    raise "This makes no sense in the context of a normal"
+  end
+
+  def self.zero
+    raise "This makes no sense in the context of a normal"
+  end
 end
 ```
 
@@ -133,7 +134,6 @@ require "linalg"
 struct Color
   COMPONENTS = [:r, :g, :b]
 
-  define_constants(Color)
   # `define_vector` defines all the vector methods
   # (see: __Example 1__) at once
   define_vector
