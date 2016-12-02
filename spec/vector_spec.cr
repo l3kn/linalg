@@ -11,11 +11,11 @@ module LA
     end
 
     def test_constants
-      assert_equal Vector3::X.x, 1.0
-      assert_equal Vector3::X.y, 0.0
-      assert_equal Vector3::X.z, 0.0
+      assert_equal Vector3.x.x, 1.0
+      assert_equal Vector3.x.y, 0.0
+      assert_equal Vector3.x.z, 0.0
 
-      assert_equal Vector3::X + Vector3::Y + Vector3::Z, Vector3::ONE
+      assert_equal Vector3.x + Vector3.y + Vector3.z, Vector3.one
     end
 
     def test_length

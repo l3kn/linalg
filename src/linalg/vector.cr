@@ -8,7 +8,7 @@ module LA
   end
 
   struct Vector1 < AVector1
-    define_constants(Vector1)
+    define_class_methods(Vector1)
   end
 
   abstract struct AVector2
@@ -17,7 +17,7 @@ module LA
   end
 
   struct Vector2 < AVector2
-    define_constants(Vector2)
+    define_class_methods(Vector2)
   end
 
   abstract struct AVector3
@@ -34,7 +34,7 @@ module LA
   end
 
   struct Vector3 < AVector3
-    define_constants(Vector3)
+    define_class_methods(Vector3)
   end
 
   abstract struct AVector4
@@ -43,6 +43,6 @@ module LA
   end
 
   struct Vector4 < AVector4
-    define_constants(Vector4)
+    define_class_methods(Vector4)
   end
 end
