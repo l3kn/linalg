@@ -5,7 +5,7 @@ module LA
   struct Color
     COMPONENTS = [:r, :g, :b]
 
-    define_constants(Color)
+    define_class_methods
     # `define_vector` defines all the vector methods
     # (see: __Example 1__) at once
     define_vector
@@ -17,7 +17,7 @@ module LA
 
   class CustomVectorTest < Minitest::Test
     def test_main
-      red = Color::R
+      red = Color.r
       other = Color.new(0.8, 0.2, 0.7)
 
       assert_equal red * other, Color.new(0.8, 0.0, 0.0)

@@ -1,16 +1,23 @@
 # TODO: Is there a way to implement these
 # in the abstract class?
 
-macro define_constants(class_name)
-  ONE = self.new(1.0)
-  ZERO = self.new(0.0)
+macro define_class_methods
+  def self.one
+    self.new(1.0)
+  end
+
+  def self.zero
+    self.new(0.0)
+  end
 
   # Generate some utility constants like
   # `Vector3::Y => Vector3(0.0, 1.0, 0.0)`
   {% for i in 0...COMPONENTS.size %}
-  {{COMPONENTS[i].upcase.id}} = self.new(
-    {% for j in 0...COMPONENTS.size %} {{ i == j ? 1.0 : 0.0 }}, {% end %}
-  )
+  def self.{{COMPONENTS[i].id}}
+    self.new(
+      {% for j in 0...COMPONENTS.size %} {{ i == j ? 1.0 : 0.0 }}, {% end %}
+    )
+  end
   {% end %}
 end
 
@@ -35,6 +42,8 @@ macro define_vector
   define_op(:/)
   define_dot
   define_length
+
+  define_class_methods
 end
 
 macro define_vector_op(op, other_class = self, result_class = self.class)
